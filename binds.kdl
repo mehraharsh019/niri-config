@@ -1,0 +1,39 @@
+binds {
+
+    Mod+Shift+Slash { show-hotkey-overlay; }
+
+    // dms
+    Mod+Space repeat=false hotkey-overlay-title="Application Launcher" {
+        spawn "dms" "ipc" "call" "spotlight" "toggle";
+    }
+
+    Mod+Alt+V repeat=false hotkey-overlay-title="Clipboard Manager" {
+        spawn "dms" "ipc" "call" "clipboard" "toggle";
+    }
+
+    Mod+Alt+L repeat=false hotkey-overlay-title="Lock Screen" {
+        spawn "dms" "ipc" "call" "lock" "lock";
+    }
+
+    // Niri
+
+    Mod+O repeat=false { toggle-overview; }
+    Mod+Q repeat=false { close-window; }
+
+    // Applications
+    Mod+Return repeat=false hotkey-overlay-title="Open Kitty Terminal" { 
+        spawn "kitty"; 
+    }
+
+    Mod+E repeat=false hotkey-overlay-title="Open File Browser" { 
+        spawn-sh "nautilus --new-window"; 
+    }
+
+    Mod+B repeat=false hotkey-overlay-title="Launch Browser" { 
+        spawn "firefox"; 
+    }
+
+    Mod+Shift+B repeat=false hotkey-overlay-title="Launch Browser (Private Mode)" { 
+        spawn-sh "firefox --private-window"; 
+    }
+}

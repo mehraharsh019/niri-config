@@ -1,0 +1,15 @@
+input {
+    focus-follows-mouse max-scroll-amount="20%"
+
+    keyboard { 
+        numlock
+    }
+
+    touchpad {
+        tap
+        natural-scroll
+    }
+
+    mouse {
+    }
+}

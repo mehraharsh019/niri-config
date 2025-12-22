@@ -1,0 +1,3 @@
+spawn-at-startup "usr/lib/polkit-kde-authenticationagent-1"
+// Clipboard history
+spawn-at-startup "bash" "-c" "wl-paste --watch cliphist store &"
