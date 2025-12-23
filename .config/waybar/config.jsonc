@@ -1,0 +1,192 @@
+{
+  "reload_style_on_change": true,
+  "layer": "top",
+  "position": "top",
+  "margin-top": 8,
+  "margin-left": 10,
+  "margin-right": 10,
+  "spacing": 4,
+  "modules-left": [
+    "clock",
+    "niri/workspaces",
+    "custom/media"
+  ],
+  "modules-center": [
+    "niri/window"
+    // "custom/privacy-dots"
+  ],
+  "modules-right": [
+    "tray",
+    "cpu",
+    "temperature",
+    "memory",
+    "bluetooth",
+    "network",
+    "pulseaudio",
+    "battery"
+  ],
+  "niri/window": {
+    "format": "{}",
+    "max-length": 40,
+    "separate-outputs": true,
+    "tooltip": false,
+    "rewrite": {
+      "(.*) — Mozilla Firefox": "󰈹 $1",
+      "(.*)Mozilla Firefox": "󰈹 Firefox",
+      "(.*) - Visual Studio Code": "󰨞 $1",
+      "(.*)Visual Studio Code": "󰨞 Code",
+      "(.*)Spotify": "󰓇 Spotify",
+      "(.*)Discord": "󰙯 Discord"
+    }
+  },
+  "niri/workspaces": {
+    "on-click": "activate",
+    "format": "{icon}",
+    "format-icons": {
+      "default": "",
+      "1": "1",
+      "2": "2",
+      "3": "3",
+      "4": "4",
+      "5": "5",
+      "6": "6",
+      "7": "7",
+      "8": "8",
+      "9": "9",
+      "active": "󱓻"
+    }
+  },
+  "cpu": {
+    "interval": 3,
+    "format": "󰍛 {usage}%"
+  },
+  "temperature": {
+    "interval": 3,
+    "format": " {temperatureC}°C"
+  },
+  "memory": {
+    "interval": 3,
+    "format": " {used:.1f}G",
+    "tooltip": true,
+    "tooltip-format": "Used:\t{used:5.2f}GiB\nFree:\t{avail:5.2f}GiB\nTotal:\t{total:5.2f}GiB"
+  },
+  "clock": {
+    "format": "{:L%a %H:%M}",
+    "tooltip": true,
+    "tooltip-format": "{:L%d %B W%V %Y}"
+  },
+  "network": {
+    "format-icons": [
+      "󰤯",
+      "󰤟",
+      "󰤢",
+      "󰤥",
+      "󰤨"
+    ],
+    "format": "{icon}",
+    "format-wifi": "{icon} {signalStrength}%",
+    "format-ethernet": "󰀂",
+    "format-disconnected": "󰤮",
+    "tooltip-format-wifi": "{essid} ({frequency} GHz)\n⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
+    "tooltip-format-ethernet": "⇣{bandwidthDownBytes}  ⇡{bandwidthUpBytes}",
+    "tooltip-format-disconnected": "Disconnected",
+    "interval": 3,
+    "spacing": 1,
+    "on-click": "kitty impala"
+  },
+  "battery": {
+    "format": "{icon} {capacity}%",
+    "format-discharging": "{icon} {capacity}%",
+    "format-charging": "{icon} {capacity}%",
+    "format-plugged": "",
+    "format-icons": {
+      "charging": [
+        "󰢜",
+        "󰂆",
+        "󰂇",
+        "󰂈",
+        "󰢝",
+        "󰂉",
+        "󰢞",
+        "󰂊",
+        "󰂋",
+        "󰂅"
+      ],
+      "default": [
+        "󰁺",
+        "󰁻",
+        "󰁼",
+        "󰁽",
+        "󰁾",
+        "󰁿",
+        "󰂀",
+        "󰂁",
+        "󰂂",
+        "󰁹"
+      ]
+    },
+    "format-full": "󰂅",
+    "tooltip-format-discharging": "{power:>1.0f}W↓ {capacity}%",
+    "tooltip-format-charging": "{power:>1.0f}W↑ {capacity}%",
+    "interval": 5,
+    "states": {
+      "warning": 20,
+      "critical": 10
+    }
+  },
+  "bluetooth": {
+    "max-length": 6,
+    "format": "󰂯",
+    "format-on": " on",
+    "format-disabled": "󰂲 off",
+    "format-connected": "󰂱 {num_connections}",
+    "tooltip-format": "{controller_alias}\n\nController: {status}",
+    "tooltip-format-connected": "Connected devices:\n\n{device_enumerate}",
+    "tooltip-format-enumerate-connected": "{device_alias}",
+    "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_battery_percentage}%",
+    "on-click": "kitty -e bluetui"
+  },
+  "pulseaudio": {
+    "format": "{icon} {volume}%",
+    "on-click": "kitty wiremix",
+    // "on-click": "pavucontrol",
+    "on-click-right": "pamixer -t",
+    "reverse-scrolling": true,
+    "tooltip-format": "Playing at {volume}%",
+    "scroll-step": 5,
+    "format-muted": "",
+    "format-icons": {
+      "default": [
+        "",
+        "",
+        ""
+      ]
+    }
+  },
+  "tray": {
+    "spacing": 12
+  },
+  "custom/media": {
+    "format": "{text}",
+    "escape": true,
+    "return-type": "json",
+    "max-length": 30,
+    "on-click": "playerctl play-pause",
+    "on-click-right": "playerctl stop",
+    // "smooth-scrolling-threshold": 10,
+    // "on-scroll-up": "playerctl next",
+    // "on-scroll-down": "playerctl previous",
+    "exec": "$HOME/.config/waybar/scripts/mediaplayer.py 2> /dev/null",
+    "tooltip": true,
+    "tooltip-format": "{text}\n\n{alt}"
+  },
+  "custom/privacy-dots": {
+    "exec": "privacy-dots",
+    "return-type": "json",
+    "interval": 3,
+    "format": "{text}",
+    "tooltip": true,
+    "escape": false,
+    "markup": "pango"
+    }
+}
